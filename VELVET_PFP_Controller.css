@@ -1,0 +1,396 @@
+/* VELVET — pure CSS GamePad Viewer Xbox skin
+   No images. Built for the "Custom CSS URL" / css= option. */
+
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+.controller.custom {
+  position: relative;
+  width: 784px;
+  height: 558px;
+  background:
+    radial-gradient(circle at 21% 35%, rgba(147, 51, 234, .34) 0 8%, transparent 24%),
+    radial-gradient(circle at 77% 64%, rgba(34, 211, 238, .20) 0 7%, transparent 24%),
+    linear-gradient(145deg, #06070b 0%, #11131a 42%, #07080d 100%);
+  border: 3px solid #8b5cf6;
+  border-radius: 24% 24% 35% 35% / 20% 20% 42% 42%;
+  box-shadow:
+    0 0 0 4px rgba(8, 10, 16, .96),
+    0 0 22px rgba(168, 85, 247, .72),
+    0 0 46px rgba(34, 211, 238, .24),
+    inset 0 0 35px rgba(168, 85, 247, .14);
+  overflow: hidden;
+  transform-origin: center;
+}
+
+/* angular VELVET graphic */
+.controller.custom::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(125deg, transparent 0 13%, rgba(168,85,247,.95) 13.3% 14.2%, transparent 14.5% 22%),
+    linear-gradient(125deg, transparent 0 18%, rgba(217,70,239,.42) 18.2% 19.1%, transparent 19.4% 100%),
+    linear-gradient(305deg, transparent 0 15%, rgba(34,211,238,.80) 15.3% 16%, transparent 16.3% 100%),
+    linear-gradient(150deg, transparent 0 73%, rgba(168,85,247,.20) 73.2% 77%, transparent 77.2% 100%);
+  mix-blend-mode: screen;
+}
+
+/* VELVET text on lower right */
+.controller.custom::after {
+  content: "VELVET";
+  position: absolute;
+  right: 78px;
+  bottom: 58px;
+  z-index: 2;
+  color: #f3e8ff;
+  font: 900 italic 28px/1 "Arial Black", Impact, sans-serif;
+  letter-spacing: 3px;
+  transform: skew(-10deg) rotate(-7deg);
+  text-shadow:
+    2px 2px 0 #7e22ce,
+    -1px -1px 0 #22d3ee,
+    0 0 10px #a855f7,
+    0 0 22px rgba(217,70,239,.75);
+  pointer-events: none;
+}
+
+.custom.disconnected {
+  opacity: .22;
+  filter: grayscale(.85);
+}
+
+.custom.disconnected div {
+  display: none;
+}
+
+/* triggers */
+.custom .triggers {
+  position: absolute;
+  z-index: 5;
+  width: 590px;
+  height: 68px;
+  left: 97px;
+  top: 7px;
+}
+
+.custom .trigger {
+  width: 116px;
+  height: 54px;
+  opacity: 0;
+  background:
+    linear-gradient(180deg, #2a2d38 0%, #101218 62%, #07080c 100%);
+  border: 3px solid #22d3ee;
+  border-radius: 18px 18px 8px 8px;
+  box-shadow:
+    inset 0 0 11px rgba(34,211,238,.35),
+    0 0 16px rgba(34,211,238,.75);
+}
+
+.custom .trigger.left { float: left; }
+.custom .trigger.right { float: right; }
+
+/* bumpers */
+.custom .bumpers {
+  position: absolute;
+  z-index: 6;
+  width: 594px;
+  height: 40px;
+  left: 95px;
+  top: 54px;
+}
+
+.custom .bumper {
+  width: 126px;
+  height: 28px;
+  opacity: .30;
+  background: linear-gradient(180deg, #252934, #0b0d12);
+  border: 2px solid #8b5cf6;
+  border-radius: 14px 14px 7px 7px;
+  box-shadow: inset 0 0 8px rgba(168,85,247,.25);
+}
+
+.custom .bumper.pressed {
+  opacity: 1;
+  background: linear-gradient(180deg, #8b5cf6, #4c1d95);
+  border-color: #f0abfc;
+  box-shadow:
+    0 0 12px #a855f7,
+    0 0 25px rgba(217,70,239,.68),
+    inset 0 0 9px rgba(255,255,255,.35);
+}
+
+.custom .bumper.left { float: left; }
+.custom .bumper.right { float: right; }
+
+/* player indicator / guide area */
+.custom .quadrant {
+  position: absolute;
+  z-index: 8;
+  width: 76px;
+  height: 76px;
+  left: 354px;
+  top: 88px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #ffffff 0 31%, #d8b4fe 32% 39%, #171922 40% 58%, #8b5cf6 59% 63%, #0a0b10 64%);
+  box-shadow:
+    0 0 14px rgba(168,85,247,.65),
+    inset 0 0 10px rgba(255,255,255,.25);
+}
+
+/* hide sprite offsets from built-in indicator */
+.custom .p0,
+.custom .p1,
+.custom .p2,
+.custom .p3 {
+  background-position: center !important;
+}
+
+/* view + menu */
+.custom .arrows {
+  position: absolute;
+  z-index: 9;
+  width: 180px;
+  height: 45px;
+  top: 196px;
+  left: 302px;
+}
+
+.custom .back,
+.custom .start {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  background: #11131a;
+  border: 2px solid #6b7280;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 8px rgba(255,255,255,.05),
+    0 0 8px rgba(168,85,247,.18);
+}
+
+.custom .back::after {
+  content: "◫";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #d8b4fe;
+  font: 700 21px/1 sans-serif;
+}
+
+.custom .start::after {
+  content: "≡";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #67e8f9;
+  font: 700 24px/1 sans-serif;
+}
+
+.custom .back { float: left; }
+.custom .start { float: right; }
+
+.custom .back.pressed,
+.custom .start.pressed {
+  margin-top: 2px;
+  border-color: #fff;
+  background: #7e22ce;
+  box-shadow:
+    0 0 11px #a855f7,
+    0 0 22px rgba(34,211,238,.42);
+}
+
+/* ABXY */
+.custom .abxy {
+  position: absolute;
+  z-index: 10;
+  width: 210px;
+  height: 210px;
+  top: 152px;
+  left: 527px;
+}
+
+.custom .button {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 28%, #272a34 0 18%, #0d0f14 52%, #050609 100%);
+  border: 3px solid currentColor;
+  box-shadow:
+    inset 0 0 10px rgba(255,255,255,.08),
+    0 4px 8px rgba(0,0,0,.55);
+}
+
+.custom .button::after {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font: 900 33px/1 "Arial Black", sans-serif;
+  color: currentColor;
+  text-shadow: 0 0 7px currentColor;
+}
+
+.custom .a {
+  color: #65ff65;
+  top: 139px;
+  left: 72px;
+}
+.custom .a::after { content: "A"; }
+
+.custom .b {
+  color: #ff4d67;
+  top: 70px;
+  right: 0;
+}
+.custom .b::after { content: "B"; }
+
+.custom .x {
+  color: #38bdf8;
+  top: 70px;
+  left: 0;
+}
+.custom .x::after { content: "X"; }
+
+.custom .y {
+  color: #fde047;
+  top: 0;
+  left: 72px;
+}
+.custom .y::after { content: "Y"; }
+
+.custom .button.pressed {
+  margin-top: 4px;
+  transform: scale(.92);
+  background: radial-gradient(circle at 50% 50%, #fff 0 5%, currentColor 22%, #0a0b10 67%);
+  box-shadow:
+    0 0 12px currentColor,
+    0 0 28px currentColor,
+    inset 0 0 12px #fff;
+}
+
+/* sticks */
+.custom .sticks {
+  position: absolute;
+  z-index: 12;
+  width: 370px;
+  height: 120px;
+  top: 320px;
+  left: 207px;
+}
+
+.custom .stick {
+  position: absolute;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 40% 35%, #2c3039 0 12%, #181b21 31%, #090a0e 58%, #11131a 60% 70%, #08090d 72%);
+  border: 4px solid #8b5cf6;
+  box-shadow:
+    0 0 0 3px #090a0e,
+    0 0 14px rgba(168,85,247,.72),
+    inset 0 0 12px rgba(255,255,255,.08);
+}
+
+.custom .stick.left {
+  top: 0;
+  left: 0;
+  border-color: #a855f7;
+}
+
+.custom .stick.right {
+  top: 0;
+  right: 0;
+  border-color: #22d3ee;
+  box-shadow:
+    0 0 0 3px #090a0e,
+    0 0 14px rgba(34,211,238,.68),
+    inset 0 0 12px rgba(255,255,255,.08);
+}
+
+.custom .stick.pressed {
+  border-color: #fff;
+  box-shadow:
+    0 0 0 3px #090a0e,
+    0 0 12px #fff,
+    0 0 26px #d946ef,
+    inset 0 0 13px rgba(255,255,255,.28);
+}
+
+/* D-pad */
+.custom .dpad {
+  position: absolute;
+  z-index: 11;
+  width: 152px;
+  height: 152px;
+  top: 284px;
+  left: 82px;
+}
+
+.custom .face {
+  position: absolute;
+  background: #171a20;
+  border: 2px solid #4b5563;
+  box-shadow: inset 0 0 7px rgba(255,255,255,.04);
+}
+
+.custom .face.up,
+.custom .face.down {
+  width: 46px;
+  height: 60px;
+  left: 53px;
+}
+
+.custom .face.left,
+.custom .face.right {
+  width: 60px;
+  height: 46px;
+  top: 53px;
+}
+
+.custom .face.up {
+  top: 0;
+  border-radius: 9px 9px 3px 3px;
+}
+
+.custom .face.down {
+  bottom: 0;
+  border-radius: 3px 3px 9px 9px;
+}
+
+.custom .face.left {
+  left: 0;
+  border-radius: 9px 3px 3px 9px;
+}
+
+.custom .face.right {
+  right: 0;
+  border-radius: 3px 9px 9px 3px;
+}
+
+.custom .face.pressed {
+  margin-top: 0;
+  background: linear-gradient(145deg, #8b5cf6, #22d3ee);
+  border-color: #fff;
+  box-shadow:
+    0 0 10px #a855f7,
+    0 0 19px rgba(34,211,238,.70),
+    inset 0 0 7px rgba(255,255,255,.45);
+}
+
+/* fightstick trigger button fallbacks */
+.custom .trigger-button.left,
+.custom .trigger-button.right {
+  display: none;
+}
