@@ -282,3 +282,26 @@ html, body {
 .edit .trigger-button.right {
   display: none !important;
 }
+
+
+/* === OBS VIEWPORT FIX ===
+   Keeps the complete controller visible and centered inside an 800x650 GPV browser source. */
+html, body {
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+.controller.edit {
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  margin: 0 !important;
+  transform: translate(-50%, -50%) scale(.76) !important;
+  transform-origin: center center !important;
+}
