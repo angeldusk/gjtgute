@@ -1,396 +1,284 @@
-/* VELVET — pure CSS GamePad Viewer Xbox skin
-   No images. Built for the "Custom CSS URL" / css= option. */
+/* VELVET — GamePad Viewer Xbox One EDIT skin
+   Built for GPV Classic Skin -> Xbox One -> Edit CSS URL.
+   Pure CSS: no external images required beyond GamePad Viewer's built-in Xbox artwork. */
 
 html, body {
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
   background: transparent !important;
 }
 
-.controller.custom {
+/* Keep the real Xbox One silhouette, then color-match it to VELVET. */
+.controller.edit {
   position: relative;
-  width: 784px;
-  height: 558px;
-  background:
-    radial-gradient(circle at 21% 35%, rgba(147, 51, 234, .34) 0 8%, transparent 24%),
-    radial-gradient(circle at 77% 64%, rgba(34, 211, 238, .20) 0 7%, transparent 24%),
-    linear-gradient(145deg, #06070b 0%, #11131a 42%, #07080d 100%);
-  border: 3px solid #8b5cf6;
-  border-radius: 24% 24% 35% 35% / 20% 20% 42% 42%;
-  box-shadow:
-    0 0 0 4px rgba(8, 10, 16, .96),
-    0 0 22px rgba(168, 85, 247, .72),
-    0 0 46px rgba(34, 211, 238, .24),
-    inset 0 0 35px rgba(168, 85, 247, .14);
-  overflow: hidden;
-  transform-origin: center;
+  filter:
+    drop-shadow(0 0 10px rgba(168, 85, 247, .48))
+    drop-shadow(0 0 22px rgba(34, 211, 238, .18));
+  transform-origin: center center;
 }
 
-/* angular VELVET graphic */
-.controller.custom::before {
+/* Purple/cyan graphic layer over the stock black Xbox shell. */
+.controller.edit::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: 92px 52px 82px 52px;
   z-index: 0;
   pointer-events: none;
+  border-radius: 30% 30% 38% 38% / 20% 20% 44% 44%;
+  clip-path: polygon(
+    10% 4%, 34% 0%, 42% 8%, 58% 8%, 66% 0%, 90% 4%,
+    98% 25%, 100% 56%, 95% 88%, 84% 100%, 68% 78%,
+    32% 78%, 16% 100%, 5% 88%, 0% 56%, 2% 25%
+  );
   background:
-    linear-gradient(125deg, transparent 0 13%, rgba(168,85,247,.95) 13.3% 14.2%, transparent 14.5% 22%),
-    linear-gradient(125deg, transparent 0 18%, rgba(217,70,239,.42) 18.2% 19.1%, transparent 19.4% 100%),
-    linear-gradient(305deg, transparent 0 15%, rgba(34,211,238,.80) 15.3% 16%, transparent 16.3% 100%),
-    linear-gradient(150deg, transparent 0 73%, rgba(168,85,247,.20) 73.2% 77%, transparent 77.2% 100%);
-  mix-blend-mode: screen;
+    linear-gradient(128deg,
+      transparent 0 13%,
+      rgba(168,85,247,.85) 13.3% 14.1%,
+      transparent 14.5% 24%),
+    linear-gradient(128deg,
+      transparent 0 19%,
+      rgba(217,70,239,.34) 19.3% 22%,
+      transparent 22.4% 100%),
+    linear-gradient(310deg,
+      transparent 0 12%,
+      rgba(34,211,238,.72) 12.3% 13.2%,
+      transparent 13.5% 26%),
+    radial-gradient(circle at 17% 30%, rgba(168,85,247,.34), transparent 26%),
+    radial-gradient(circle at 83% 63%, rgba(34,211,238,.20), transparent 24%);
+  box-shadow:
+    inset 0 0 34px rgba(168,85,247,.14),
+    inset 0 0 16px rgba(34,211,238,.08);
 }
 
-/* VELVET text on lower right */
-.controller.custom::after {
+/* PFP-style VELVET signature. */
+.controller.edit::after {
   content: "VELVET";
   position: absolute;
-  right: 78px;
-  bottom: 58px;
+  right: 105px;
+  bottom: 105px;
   z-index: 2;
-  color: #f3e8ff;
-  font: 900 italic 28px/1 "Arial Black", Impact, sans-serif;
-  letter-spacing: 3px;
-  transform: skew(-10deg) rotate(-7deg);
-  text-shadow:
-    2px 2px 0 #7e22ce,
-    -1px -1px 0 #22d3ee,
-    0 0 10px #a855f7,
-    0 0 22px rgba(217,70,239,.75);
   pointer-events: none;
+  color: #f3e8ff;
+  font: 900 italic 25px/1 "Arial Black", Impact, sans-serif;
+  letter-spacing: 2px;
+  transform: skew(-11deg) rotate(-7deg);
+  text-shadow:
+    2px 2px 0 #6d28d9,
+    -1px -1px 0 #22d3ee,
+    0 0 8px #a855f7,
+    0 0 18px rgba(217,70,239,.75);
 }
 
-.custom.disconnected {
-  opacity: .22;
-  filter: grayscale(.85);
+/* Keep disconnected state readable. */
+.edit.disconnected {
+  opacity: .30 !important;
+  filter: grayscale(.8);
 }
-
-.custom.disconnected div {
+.edit.disconnected div {
   display: none;
 }
 
-/* triggers */
-.custom .triggers {
-  position: absolute;
-  z-index: 5;
-  width: 590px;
-  height: 68px;
-  left: 97px;
-  top: 7px;
-}
-
-.custom .trigger {
-  width: 116px;
-  height: 54px;
-  opacity: 0;
+/* Guide/player indicator: purple + cyan ring. */
+.edit .quadrant {
+  border-radius: 50% !important;
   background:
-    linear-gradient(180deg, #2a2d38 0%, #101218 62%, #07080c 100%);
-  border: 3px solid #22d3ee;
-  border-radius: 18px 18px 8px 8px;
+    radial-gradient(circle,
+      #f8fafc 0 31%,
+      #c4b5fd 32% 39%,
+      #12141b 40% 56%,
+      #8b5cf6 57% 63%,
+      #07080c 64%) !important;
   box-shadow:
-    inset 0 0 11px rgba(34,211,238,.35),
-    0 0 16px rgba(34,211,238,.75);
+    0 0 10px rgba(168,85,247,.78),
+    0 0 18px rgba(34,211,238,.25) !important;
 }
-
-.custom .trigger.left { float: left; }
-.custom .trigger.right { float: right; }
-
-/* bumpers */
-.custom .bumpers {
-  position: absolute;
-  z-index: 6;
-  width: 594px;
-  height: 40px;
-  left: 95px;
-  top: 54px;
-}
-
-.custom .bumper {
-  width: 126px;
-  height: 28px;
-  opacity: .30;
-  background: linear-gradient(180deg, #252934, #0b0d12);
-  border: 2px solid #8b5cf6;
-  border-radius: 14px 14px 7px 7px;
-  box-shadow: inset 0 0 8px rgba(168,85,247,.25);
-}
-
-.custom .bumper.pressed {
-  opacity: 1;
-  background: linear-gradient(180deg, #8b5cf6, #4c1d95);
-  border-color: #f0abfc;
-  box-shadow:
-    0 0 12px #a855f7,
-    0 0 25px rgba(217,70,239,.68),
-    inset 0 0 9px rgba(255,255,255,.35);
-}
-
-.custom .bumper.left { float: left; }
-.custom .bumper.right { float: right; }
-
-/* player indicator / guide area */
-.custom .quadrant {
-  position: absolute;
-  z-index: 8;
-  width: 76px;
-  height: 76px;
-  left: 354px;
-  top: 88px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle, #ffffff 0 31%, #d8b4fe 32% 39%, #171922 40% 58%, #8b5cf6 59% 63%, #0a0b10 64%);
-  box-shadow:
-    0 0 14px rgba(168,85,247,.65),
-    inset 0 0 10px rgba(255,255,255,.25);
-}
-
-/* hide sprite offsets from built-in indicator */
-.custom .p0,
-.custom .p1,
-.custom .p2,
-.custom .p3 {
+.edit .p0,
+.edit .p1,
+.edit .p2,
+.edit .p3 {
   background-position: center !important;
 }
 
-/* view + menu */
-.custom .arrows {
-  position: absolute;
-  z-index: 9;
-  width: 180px;
-  height: 45px;
-  top: 196px;
-  left: 302px;
-}
-
-.custom .back,
-.custom .start {
-  position: relative;
-  width: 44px;
-  height: 44px;
-  background: #11131a;
-  border: 2px solid #6b7280;
-  border-radius: 50%;
-  box-shadow:
-    inset 0 0 8px rgba(255,255,255,.05),
-    0 0 8px rgba(168,85,247,.18);
-}
-
-.custom .back::after {
-  content: "◫";
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  color: #d8b4fe;
-  font: 700 21px/1 sans-serif;
-}
-
-.custom .start::after {
-  content: "≡";
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  color: #67e8f9;
-  font: 700 24px/1 sans-serif;
-}
-
-.custom .back { float: left; }
-.custom .start { float: right; }
-
-.custom .back.pressed,
-.custom .start.pressed {
-  margin-top: 2px;
-  border-color: #fff;
-  background: #7e22ce;
-  box-shadow:
-    0 0 11px #a855f7,
-    0 0 22px rgba(34,211,238,.42);
-}
-
-/* ABXY */
-.custom .abxy {
-  position: absolute;
-  z-index: 10;
-  width: 210px;
-  height: 210px;
-  top: 152px;
-  left: 527px;
-}
-
-.custom .button {
-  position: absolute;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 28%, #272a34 0 18%, #0d0f14 52%, #050609 100%);
-  border: 3px solid currentColor;
-  box-shadow:
-    inset 0 0 10px rgba(255,255,255,.08),
-    0 4px 8px rgba(0,0,0,.55);
-}
-
-.custom .button::after {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font: 900 33px/1 "Arial Black", sans-serif;
-  color: currentColor;
-  text-shadow: 0 0 7px currentColor;
-}
-
-.custom .a {
-  color: #65ff65;
-  top: 139px;
-  left: 72px;
-}
-.custom .a::after { content: "A"; }
-
-.custom .b {
-  color: #ff4d67;
-  top: 70px;
-  right: 0;
-}
-.custom .b::after { content: "B"; }
-
-.custom .x {
-  color: #38bdf8;
-  top: 70px;
-  left: 0;
-}
-.custom .x::after { content: "X"; }
-
-.custom .y {
-  color: #fde047;
-  top: 0;
-  left: 72px;
-}
-.custom .y::after { content: "Y"; }
-
-.custom .button.pressed {
-  margin-top: 4px;
-  transform: scale(.92);
-  background: radial-gradient(circle at 50% 50%, #fff 0 5%, currentColor 22%, #0a0b10 67%);
-  box-shadow:
-    0 0 12px currentColor,
-    0 0 28px currentColor,
-    inset 0 0 12px #fff;
-}
-
-/* sticks */
-.custom .sticks {
-  position: absolute;
-  z-index: 12;
-  width: 370px;
-  height: 120px;
-  top: 320px;
-  left: 207px;
-}
-
-.custom .stick {
-  position: absolute;
-  width: 112px;
-  height: 112px;
-  border-radius: 50%;
+/* ABXY: keep standard Xbox colors, but make them cleaner/neon. */
+.edit .button {
+  background-image: none !important;
+  border-radius: 50% !important;
   background:
-    radial-gradient(circle at 40% 35%, #2c3039 0 12%, #181b21 31%, #090a0e 58%, #11131a 60% 70%, #08090d 72%);
-  border: 4px solid #8b5cf6;
+    radial-gradient(circle at 34% 28%, #2b2e37 0 18%, #0d0f14 52%, #050609 100%) !important;
+  border: 3px solid currentColor !important;
+  box-sizing: border-box !important;
   box-shadow:
-    0 0 0 3px #090a0e,
-    0 0 14px rgba(168,85,247,.72),
-    inset 0 0 12px rgba(255,255,255,.08);
+    inset 0 0 8px rgba(255,255,255,.07),
+    0 3px 7px rgba(0,0,0,.55) !important;
+  opacity: .94 !important;
+  overflow: visible !important;
 }
-
-.custom .stick.left {
-  top: 0;
-  left: 0;
-  border-color: #a855f7;
-}
-
-.custom .stick.right {
-  top: 0;
-  right: 0;
-  border-color: #22d3ee;
-  box-shadow:
-    0 0 0 3px #090a0e,
-    0 0 14px rgba(34,211,238,.68),
-    inset 0 0 12px rgba(255,255,255,.08);
-}
-
-.custom .stick.pressed {
-  border-color: #fff;
-  box-shadow:
-    0 0 0 3px #090a0e,
-    0 0 12px #fff,
-    0 0 26px #d946ef,
-    inset 0 0 13px rgba(255,255,255,.28);
-}
-
-/* D-pad */
-.custom .dpad {
+.edit .button::after {
   position: absolute;
-  z-index: 11;
-  width: 152px;
-  height: 152px;
-  top: 284px;
-  left: 82px;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font: 900 26px/1 "Arial Black", sans-serif;
+  color: currentColor;
+  text-shadow: 0 0 6px currentColor;
 }
+.edit .a { color: #63ff61 !important; }
+.edit .b { color: #ff4d67 !important; }
+.edit .x { color: #38bdf8 !important; }
+.edit .y { color: #fde047 !important; }
+.edit .a::after { content: "A"; }
+.edit .b::after { content: "B"; }
+.edit .x::after { content: "X"; }
+.edit .y::after { content: "Y"; }
 
-.custom .face {
-  position: absolute;
-  background: #171a20;
-  border: 2px solid #4b5563;
-  box-shadow: inset 0 0 7px rgba(255,255,255,.04);
-}
-
-.custom .face.up,
-.custom .face.down {
-  width: 46px;
-  height: 60px;
-  left: 53px;
-}
-
-.custom .face.left,
-.custom .face.right {
-  width: 60px;
-  height: 46px;
-  top: 53px;
-}
-
-.custom .face.up {
-  top: 0;
-  border-radius: 9px 9px 3px 3px;
-}
-
-.custom .face.down {
-  bottom: 0;
-  border-radius: 3px 3px 9px 9px;
-}
-
-.custom .face.left {
-  left: 0;
-  border-radius: 9px 3px 3px 9px;
-}
-
-.custom .face.right {
-  right: 0;
-  border-radius: 3px 9px 9px 3px;
-}
-
-.custom .face.pressed {
-  margin-top: 0;
-  background: linear-gradient(145deg, #8b5cf6, #22d3ee);
-  border-color: #fff;
+.edit .button.pressed {
+  background:
+    radial-gradient(circle at 50% 50%, #fff 0 6%, currentColor 19%, #090a0e 67%) !important;
+  transform: scale(.94);
+  opacity: 1 !important;
   box-shadow:
-    0 0 10px #a855f7,
-    0 0 19px rgba(34,211,238,.70),
-    inset 0 0 7px rgba(255,255,255,.45);
+    0 0 10px currentColor,
+    0 0 23px currentColor,
+    inset 0 0 11px #fff !important;
 }
 
-/* fightstick trigger button fallbacks */
-.custom .trigger-button.left,
-.custom .trigger-button.right {
-  display: none;
+/* Thumb sticks: black with purple/cyan rings. */
+.edit .stick {
+  background-image: none !important;
+  border-radius: 50% !important;
+  background:
+    radial-gradient(circle at 38% 34%,
+      #30343d 0 12%,
+      #1b1e25 29%,
+      #090a0e 58%,
+      #11131a 60% 70%,
+      #07080c 72%) !important;
+  border: 4px solid #a855f7 !important;
+  box-sizing: border-box !important;
+  box-shadow:
+    0 0 0 3px #090a0e,
+    0 0 11px rgba(168,85,247,.70),
+    inset 0 0 10px rgba(255,255,255,.07) !important;
+}
+.edit .stick.right {
+  border-color: #22d3ee !important;
+  background-color: transparent !important;
+  box-shadow:
+    0 0 0 3px #090a0e,
+    0 0 11px rgba(34,211,238,.68),
+    inset 0 0 10px rgba(255,255,255,.07) !important;
+}
+.edit .stick.pressed {
+  border-color: #fff !important;
+  box-shadow:
+    0 0 0 3px #090a0e,
+    0 0 11px #fff,
+    0 0 24px #d946ef,
+    inset 0 0 10px rgba(255,255,255,.22) !important;
+}
+
+/* D-pad: clean dark cross; light up pressed direction. */
+.edit .dpad {
+  filter: drop-shadow(0 0 7px rgba(168,85,247,.28));
+}
+.edit .face {
+  background-image: none !important;
+  background: #171920 !important;
+  border: 2px solid #4b5563 !important;
+  box-sizing: border-box !important;
+  opacity: .90 !important;
+  box-shadow: inset 0 0 6px rgba(255,255,255,.04);
+}
+.edit .face.up,
+.edit .face.down {
+  width: 34px !important;
+  height: 56px !important;
+}
+.edit .face.left,
+.edit .face.right {
+  width: 56px !important;
+  height: 34px !important;
+}
+.edit .face.up {
+  border-radius: 8px 8px 3px 3px;
+}
+.edit .face.down {
+  border-radius: 3px 3px 8px 8px;
+}
+.edit .face.left {
+  border-radius: 8px 3px 3px 8px;
+}
+.edit .face.right {
+  border-radius: 3px 8px 8px 3px;
+}
+.edit .face.pressed {
+  opacity: 1 !important;
+  background: linear-gradient(145deg,#8b5cf6,#22d3ee) !important;
+  border-color: #fff !important;
+  box-shadow:
+    0 0 9px #a855f7,
+    0 0 17px rgba(34,211,238,.68),
+    inset 0 0 6px rgba(255,255,255,.45) !important;
+}
+
+/* View/Menu buttons. */
+.edit .back,
+.edit .start {
+  background-image: none !important;
+  border-radius: 50% !important;
+  background: #11131a !important;
+  border: 2px solid #6b7280 !important;
+  opacity: .82 !important;
+  box-sizing: border-box !important;
+  box-shadow: inset 0 0 7px rgba(255,255,255,.05);
+}
+.edit .back::after,
+.edit .start::after {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #e9d5ff;
+  font: 700 17px/1 sans-serif;
+}
+.edit .back::after { content: "◫"; }
+.edit .start::after {
+  content: "≡";
+  color: #67e8f9;
+  font-size: 20px;
+}
+.edit .back.pressed,
+.edit .start.pressed {
+  opacity: 1 !important;
+  background: #6d28d9 !important;
+  border-color: #fff !important;
+  box-shadow:
+    0 0 9px #a855f7,
+    0 0 18px rgba(34,211,238,.38) !important;
+}
+
+/* Bumpers/triggers only appear while pressed in GPV; make those flashes match. */
+.edit .bumper {
+  background-image: none !important;
+  background: linear-gradient(180deg,#7c3aed,#312e81) !important;
+  border: 2px solid #e9d5ff !important;
+  border-radius: 16px 16px 8px 8px !important;
+  box-sizing: border-box !important;
+  box-shadow:
+    0 0 11px rgba(168,85,247,.82),
+    inset 0 0 7px rgba(255,255,255,.22) !important;
+}
+.edit .trigger {
+  background-image: none !important;
+  background: linear-gradient(180deg,#164e63,#0f172a) !important;
+  border: 2px solid #67e8f9 !important;
+  border-radius: 18px 18px 8px 8px !important;
+  box-sizing: border-box !important;
+  box-shadow:
+    0 0 11px rgba(34,211,238,.72),
+    inset 0 0 7px rgba(255,255,255,.18) !important;
+}
+
+/* Hide unused fight-stick nodes if present. */
+.edit .trigger-button.left,
+.edit .trigger-button.right {
+  display: none !important;
 }
