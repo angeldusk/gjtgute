@@ -1,307 +1,142 @@
-/* VELVET — GamePad Viewer Xbox One EDIT skin
-   Built for GPV Classic Skin -> Xbox One -> Edit CSS URL.
-   Pure CSS: no external images required beyond GamePad Viewer's built-in Xbox artwork. */
+/* VELVET — safe Xbox One EDIT skin for GamePad Viewer
+   This version intentionally preserves ALL of GamePad Viewer's built-in
+   Xbox One dimensions/positions. It only changes appearance. */
 
 html, body {
   background: transparent !important;
 }
 
-/* Keep the real Xbox One silhouette, then color-match it to VELVET. */
+/* Preserve stock geometry; add only VELVET glow. */
 .controller.edit {
-  position: relative;
   filter:
-    drop-shadow(0 0 10px rgba(168, 85, 247, .48))
-    drop-shadow(0 0 22px rgba(34, 211, 238, .18));
-  transform-origin: center center;
+    drop-shadow(0 0 8px rgba(168,85,247,.55))
+    drop-shadow(0 0 16px rgba(34,211,238,.20)) !important;
 }
 
-/* Purple/cyan graphic layer over the stock black Xbox shell. */
+/* Decorative VELVET wash over the stock shell without changing layout. */
 .controller.edit::before {
   content: "";
   position: absolute;
-  inset: 92px 52px 82px 52px;
+  inset: 0;
   z-index: 0;
   pointer-events: none;
-  border-radius: 30% 30% 38% 38% / 20% 20% 44% 44%;
-  clip-path: polygon(
-    10% 4%, 34% 0%, 42% 8%, 58% 8%, 66% 0%, 90% 4%,
-    98% 25%, 100% 56%, 95% 88%, 84% 100%, 68% 78%,
-    32% 78%, 16% 100%, 5% 88%, 0% 56%, 2% 25%
-  );
+  border-radius: 28%;
   background:
-    linear-gradient(128deg,
+    linear-gradient(125deg,
       transparent 0 13%,
-      rgba(168,85,247,.85) 13.3% 14.1%,
-      transparent 14.5% 24%),
-    linear-gradient(128deg,
-      transparent 0 19%,
-      rgba(217,70,239,.34) 19.3% 22%,
-      transparent 22.4% 100%),
-    linear-gradient(310deg,
-      transparent 0 12%,
-      rgba(34,211,238,.72) 12.3% 13.2%,
-      transparent 13.5% 26%),
-    radial-gradient(circle at 17% 30%, rgba(168,85,247,.34), transparent 26%),
-    radial-gradient(circle at 83% 63%, rgba(34,211,238,.20), transparent 24%);
-  box-shadow:
-    inset 0 0 34px rgba(168,85,247,.14),
-    inset 0 0 16px rgba(34,211,238,.08);
+      rgba(168,85,247,.32) 13.3% 14.0%,
+      transparent 14.3% 23%),
+    linear-gradient(307deg,
+      transparent 0 13%,
+      rgba(34,211,238,.22) 13.3% 14.0%,
+      transparent 14.3% 25%),
+    radial-gradient(circle at 18% 34%, rgba(147,51,234,.14), transparent 28%),
+    radial-gradient(circle at 82% 62%, rgba(34,211,238,.10), transparent 26%);
 }
 
-/* PFP-style VELVET signature. */
+/* Small signature; no controller resizing. */
 .controller.edit::after {
   content: "VELVET";
   position: absolute;
-  right: 105px;
-  bottom: 105px;
-  z-index: 2;
+  right: 82px;
+  bottom: 76px;
+  z-index: 50;
   pointer-events: none;
-  color: #f3e8ff;
-  font: 900 italic 25px/1 "Arial Black", Impact, sans-serif;
+  color: #f5e9ff;
+  font: 900 italic 22px/1 "Arial Black", Impact, sans-serif;
   letter-spacing: 2px;
-  transform: skew(-11deg) rotate(-7deg);
+  transform: rotate(-7deg) skew(-10deg);
   text-shadow:
     2px 2px 0 #6d28d9,
     -1px -1px 0 #22d3ee,
     0 0 8px #a855f7,
-    0 0 18px rgba(217,70,239,.75);
+    0 0 16px rgba(217,70,239,.72);
 }
 
-/* Keep disconnected state readable. */
-.edit.disconnected {
-  opacity: .30 !important;
-  filter: grayscale(.8);
+/* Let stock ABXY art/size remain intact; just add colored glow. */
+.edit .a {
+  filter: drop-shadow(0 0 4px rgba(101,255,97,.40));
 }
-.edit.disconnected div {
-  display: none;
+.edit .b {
+  filter: drop-shadow(0 0 4px rgba(255,77,103,.40));
 }
-
-/* Guide/player indicator: purple + cyan ring. */
-.edit .quadrant {
-  border-radius: 50% !important;
-  background:
-    radial-gradient(circle,
-      #f8fafc 0 31%,
-      #c4b5fd 32% 39%,
-      #12141b 40% 56%,
-      #8b5cf6 57% 63%,
-      #07080c 64%) !important;
-  box-shadow:
-    0 0 10px rgba(168,85,247,.78),
-    0 0 18px rgba(34,211,238,.25) !important;
+.edit .x {
+  filter: drop-shadow(0 0 4px rgba(56,189,248,.42));
 }
-.edit .p0,
-.edit .p1,
-.edit .p2,
-.edit .p3 {
-  background-position: center !important;
+.edit .y {
+  filter: drop-shadow(0 0 4px rgba(253,224,71,.42));
 }
 
-/* ABXY: keep standard Xbox colors, but make them cleaner/neon. */
-.edit .button {
-  background-image: none !important;
-  border-radius: 50% !important;
-  background:
-    radial-gradient(circle at 34% 28%, #2b2e37 0 18%, #0d0f14 52%, #050609 100%) !important;
-  border: 3px solid currentColor !important;
-  box-sizing: border-box !important;
-  box-shadow:
-    inset 0 0 8px rgba(255,255,255,.07),
-    0 3px 7px rgba(0,0,0,.55) !important;
-  opacity: .94 !important;
-  overflow: visible !important;
+.edit .a.pressed {
+  filter: drop-shadow(0 0 8px #65ff61) drop-shadow(0 0 14px #65ff61) !important;
 }
-.edit .button::after {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font: 900 26px/1 "Arial Black", sans-serif;
-  color: currentColor;
-  text-shadow: 0 0 6px currentColor;
+.edit .b.pressed {
+  filter: drop-shadow(0 0 8px #ff4d67) drop-shadow(0 0 14px #ff4d67) !important;
 }
-.edit .a { color: #63ff61 !important; }
-.edit .b { color: #ff4d67 !important; }
-.edit .x { color: #38bdf8 !important; }
-.edit .y { color: #fde047 !important; }
-.edit .a::after { content: "A"; }
-.edit .b::after { content: "B"; }
-.edit .x::after { content: "X"; }
-.edit .y::after { content: "Y"; }
-
-.edit .button.pressed {
-  background:
-    radial-gradient(circle at 50% 50%, #fff 0 6%, currentColor 19%, #090a0e 67%) !important;
-  transform: scale(.94);
-  opacity: 1 !important;
-  box-shadow:
-    0 0 10px currentColor,
-    0 0 23px currentColor,
-    inset 0 0 11px #fff !important;
+.edit .x.pressed {
+  filter: drop-shadow(0 0 8px #38bdf8) drop-shadow(0 0 14px #38bdf8) !important;
+}
+.edit .y.pressed {
+  filter: drop-shadow(0 0 8px #fde047) drop-shadow(0 0 14px #fde047) !important;
 }
 
-/* Thumb sticks: black with purple/cyan rings. */
-.edit .stick {
-  background-image: none !important;
-  border-radius: 50% !important;
-  background:
-    radial-gradient(circle at 38% 34%,
-      #30343d 0 12%,
-      #1b1e25 29%,
-      #090a0e 58%,
-      #11131a 60% 70%,
-      #07080c 72%) !important;
-  border: 4px solid #a855f7 !important;
-  box-sizing: border-box !important;
-  box-shadow:
-    0 0 0 3px #090a0e,
-    0 0 11px rgba(168,85,247,.70),
-    inset 0 0 10px rgba(255,255,255,.07) !important;
+/* Stock stick placement/size remains; glow only. */
+.edit .stick.left {
+  filter:
+    drop-shadow(0 0 5px rgba(168,85,247,.70))
+    drop-shadow(0 0 10px rgba(168,85,247,.32));
 }
 .edit .stick.right {
-  border-color: #22d3ee !important;
-  background-color: transparent !important;
-  box-shadow:
-    0 0 0 3px #090a0e,
-    0 0 11px rgba(34,211,238,.68),
-    inset 0 0 10px rgba(255,255,255,.07) !important;
+  filter:
+    drop-shadow(0 0 5px rgba(34,211,238,.70))
+    drop-shadow(0 0 10px rgba(34,211,238,.30));
 }
 .edit .stick.pressed {
-  border-color: #fff !important;
-  box-shadow:
-    0 0 0 3px #090a0e,
-    0 0 11px #fff,
-    0 0 24px #d946ef,
-    inset 0 0 10px rgba(255,255,255,.22) !important;
+  filter:
+    drop-shadow(0 0 7px #fff)
+    drop-shadow(0 0 14px #d946ef) !important;
 }
 
-/* D-pad: clean dark cross; light up pressed direction. */
+/* D-pad uses stock shape and coordinates. */
 .edit .dpad {
-  filter: drop-shadow(0 0 7px rgba(168,85,247,.28));
-}
-.edit .face {
-  background-image: none !important;
-  background: #171920 !important;
-  border: 2px solid #4b5563 !important;
-  box-sizing: border-box !important;
-  opacity: .90 !important;
-  box-shadow: inset 0 0 6px rgba(255,255,255,.04);
-}
-.edit .face.up,
-.edit .face.down {
-  width: 34px !important;
-  height: 56px !important;
-}
-.edit .face.left,
-.edit .face.right {
-  width: 56px !important;
-  height: 34px !important;
-}
-.edit .face.up {
-  border-radius: 8px 8px 3px 3px;
-}
-.edit .face.down {
-  border-radius: 3px 3px 8px 8px;
-}
-.edit .face.left {
-  border-radius: 8px 3px 3px 8px;
-}
-.edit .face.right {
-  border-radius: 3px 8px 8px 3px;
+  filter: drop-shadow(0 0 5px rgba(168,85,247,.28));
 }
 .edit .face.pressed {
-  opacity: 1 !important;
-  background: linear-gradient(145deg,#8b5cf6,#22d3ee) !important;
-  border-color: #fff !important;
-  box-shadow:
-    0 0 9px #a855f7,
-    0 0 17px rgba(34,211,238,.68),
-    inset 0 0 6px rgba(255,255,255,.45) !important;
+  filter:
+    brightness(1.35)
+    drop-shadow(0 0 6px #a855f7)
+    drop-shadow(0 0 10px rgba(34,211,238,.72)) !important;
 }
 
-/* View/Menu buttons. */
+/* View/Menu. */
 .edit .back,
 .edit .start {
-  background-image: none !important;
-  border-radius: 50% !important;
-  background: #11131a !important;
-  border: 2px solid #6b7280 !important;
-  opacity: .82 !important;
-  box-sizing: border-box !important;
-  box-shadow: inset 0 0 7px rgba(255,255,255,.05);
-}
-.edit .back::after,
-.edit .start::after {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  color: #e9d5ff;
-  font: 700 17px/1 sans-serif;
-}
-.edit .back::after { content: "◫"; }
-.edit .start::after {
-  content: "≡";
-  color: #67e8f9;
-  font-size: 20px;
+  filter: drop-shadow(0 0 4px rgba(168,85,247,.30));
 }
 .edit .back.pressed,
 .edit .start.pressed {
-  opacity: 1 !important;
-  background: #6d28d9 !important;
-  border-color: #fff !important;
-  box-shadow:
-    0 0 9px #a855f7,
-    0 0 18px rgba(34,211,238,.38) !important;
+  filter:
+    brightness(1.45)
+    drop-shadow(0 0 7px #a855f7)
+    drop-shadow(0 0 11px rgba(34,211,238,.52)) !important;
 }
 
-/* Bumpers/triggers only appear while pressed in GPV; make those flashes match. */
+/* Bumpers/triggers keep built-in sprite dimensions. */
 .edit .bumper {
-  background-image: none !important;
-  background: linear-gradient(180deg,#7c3aed,#312e81) !important;
-  border: 2px solid #e9d5ff !important;
-  border-radius: 16px 16px 8px 8px !important;
-  box-sizing: border-box !important;
-  box-shadow:
-    0 0 11px rgba(168,85,247,.82),
-    inset 0 0 7px rgba(255,255,255,.22) !important;
+  filter: drop-shadow(0 0 6px rgba(168,85,247,.75)) !important;
 }
 .edit .trigger {
-  background-image: none !important;
-  background: linear-gradient(180deg,#164e63,#0f172a) !important;
-  border: 2px solid #67e8f9 !important;
-  border-radius: 18px 18px 8px 8px !important;
-  box-sizing: border-box !important;
-  box-shadow:
-    0 0 11px rgba(34,211,238,.72),
-    inset 0 0 7px rgba(255,255,255,.18) !important;
+  filter: drop-shadow(0 0 6px rgba(34,211,238,.75)) !important;
 }
 
-/* Hide unused fight-stick nodes if present. */
-.edit .trigger-button.left,
-.edit .trigger-button.right {
-  display: none !important;
+/* Player/guide area gets a subtle purple/cyan halo only. */
+.edit .quadrant {
+  filter:
+    drop-shadow(0 0 6px rgba(168,85,247,.58))
+    drop-shadow(0 0 9px rgba(34,211,238,.20));
 }
 
-
-/* === OBS VIEWPORT FIX ===
-   Keeps the complete controller visible and centered inside an 800x650 GPV browser source. */
-html, body {
-  width: 100% !important;
-  height: 100% !important;
-  min-width: 0 !important;
-  min-height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  background: transparent !important;
-}
-
-.controller.edit {
-  position: absolute !important;
-  left: 50% !important;
-  top: 50% !important;
-  margin: 0 !important;
-  transform: translate(-50%, -50%) scale(.76) !important;
-  transform-origin: center center !important;
+/* Keep GPV's disconnected behavior intact. */
+.edit.disconnected {
+  opacity: .30 !important;
 }
